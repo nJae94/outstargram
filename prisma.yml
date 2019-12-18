@@ -1,0 +1,6 @@
+endpoint: https://us1.prisma.sh/sunjae-jeong-895707/outstargram/dev
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ./generated/prisma-client/
