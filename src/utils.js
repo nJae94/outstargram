@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.resolve(__dirname, ".env") });
+import jwt from "jsonwebtoken"
 
 import { adjectives, nouns } from "./words";
 import nodemailer from "nodemailer";
@@ -30,7 +31,9 @@ export const sendSecretMail = (adress, secret) => {
     from: "test@gmail.com",
     to: adress,
     subject: "🔒Login Secret for outstargram🔒",
-    html: `Hello! Your login secret it ${secret}.<br/>Copy paste on the app/website to log in`
+    html: `Hello! Your login secret it <b>${secret}</b>.<br/>Copy paste on the app/website to log in`
   };
   return sendMail(email);
 };
+
+export const generateToken = (id) => jwt.sign({id},process.env.JWT_SECRET);
