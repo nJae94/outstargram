@@ -4,4 +4,6 @@
 - [X] create Account 
 graphql을 사용하여 create Account 테스트  
 - [X] Request password
-- [] login
+- [X] login
+- [X] Like(포스트 좋아요/좋아요 취소)
+- [X] Comment(댓글 추가 DB 저장 확인까지)
