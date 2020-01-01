@@ -6,6 +6,7 @@ import logger from "morgan";
 import schema from "./schema";
 import "./passport";
 import {authenticateJwt} from "./passport"
+import { isAuthenticated } from "./middlewares";
 
 //이메일 테스트
 //sendSecretMail("azuretic94@gmail.com", "123");
@@ -14,7 +15,7 @@ const PORT = process.env.PORT || 4000;
 
 const server = new GraphQLServer({
   schema,
-  context: ({ request }) => ({ request })
+  context: ({ request }) => ({ request, isAuthenticated })
 });
 
 server.express.use(logger("dev"));
