@@ -55,3 +55,8 @@ type Message{
   to: User! 
   dm: [Dm!]!
 }
+
+type UserProfile {
+  user: User!
+  posts: [Post!]!
+}
