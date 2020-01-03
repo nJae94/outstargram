@@ -14,11 +14,4 @@ export default {
       };
     }
   },
-  //parent는 User를 호출 하는 상위 resolver 여기선 user
-  User: {
-    fullName: parent => {
-      // parent에서 id에 해당하는 user정보를 가져오니까 그 중 firstName과 lastName을 합쳐서 반환
-      return `${parent.firstName} ${parent.lastName}`;
-    }
-  }
 };
