@@ -13,8 +13,10 @@ type User {
   posts: [Post!]!
   likes: [Like!]!
   comments: [Comment!]!
-  rooms: [Room!]!
+  Dm: [Dm!]!
   loginSecret: String!
+  createdAt: String
+  updatedAt: String
 }
 
 type Post {
@@ -26,12 +28,17 @@ type Post {
   likes: [Like!]!
   comments: [Comment!]!
   isLiked: Boolean!
+  likeCount: Int!
+  createdAt: String
+  updatedAt: String
 }
 
 type Like {
   id: ID!
   user: User!
   post: Post!
+  createdAt: String
+  updatedAt: String
 }
 
 type Comment {
@@ -39,18 +46,24 @@ type Comment {
   text: String!
   user: User!
   post: Post!
+  createdAt: String
+  updatedAt: String
 }
 
 type File {
   id: ID!
   url: String!
   post: Post!
+  createdAt: String
+  updatedAt: String
 }
 
-type Room {
+type Dm {
   id: ID!
   participants: [User!]!
   messages: [Message!]!
+  createdAt: String
+  updatedAt: String
 }
 
 type Message {
@@ -58,10 +71,14 @@ type Message {
   text: String!
   from: User!
   to: User!
-  room: Room!
+  Dm: Dm!
+  createdAt: String
+  updatedAt: String
 }
 
 type UserProfile {
   user: User!
   posts: [Post!]!
+  createdAt: String
+  updatedAt: String
 }
