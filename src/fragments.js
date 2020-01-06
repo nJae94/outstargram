@@ -32,3 +32,12 @@ export const FULL_POST_FRAGMENT = `
         }
     }
 `;
+
+export const DM_FRAGMENT = `
+    fragment DmParts on Dm {
+        id
+        participants {
+            id
+        }
+    }
+`;
