@@ -1,4 +1,5 @@
-import { prisma } from "../../../generated/prisma-client";
+import { prisma } from "../../../../generated/prisma-client";
+import { DM_FRAGMENT } from "../../../fragments";
 
 export default {
     Query:{
@@ -11,7 +12,7 @@ export default {
                     id: user.id
                 }
             }
-        });
+        }).$fragment(DM_FRAGMENT);
         }
     }
 }

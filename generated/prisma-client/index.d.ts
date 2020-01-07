@@ -328,6 +328,8 @@ export interface ClientConstructor<T> {
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "avatar_ASC"
+  | "avatar_DESC"
   | "username_ASC"
   | "username_DESC"
   | "email_ASC"
@@ -539,6 +541,7 @@ export interface MessageWhereInput {
 }
 
 export interface UserUpdateWithoutFollowersDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -774,6 +777,20 @@ export interface UserWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
+  avatar_not?: Maybe<String>;
+  avatar_in?: Maybe<String[] | String>;
+  avatar_not_in?: Maybe<String[] | String>;
+  avatar_lt?: Maybe<String>;
+  avatar_lte?: Maybe<String>;
+  avatar_gt?: Maybe<String>;
+  avatar_gte?: Maybe<String>;
+  avatar_contains?: Maybe<String>;
+  avatar_not_contains?: Maybe<String>;
+  avatar_starts_with?: Maybe<String>;
+  avatar_not_starts_with?: Maybe<String>;
+  avatar_ends_with?: Maybe<String>;
+  avatar_not_ends_with?: Maybe<String>;
   username?: Maybe<String>;
   username_not?: Maybe<String>;
   username_in?: Maybe<String[] | String>;
@@ -935,6 +952,7 @@ export interface FileUpsertWithWhereUniqueWithoutPostInput {
 }
 
 export interface UserUpdateInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1021,10 +1039,10 @@ export interface FileUpdateManyDataInput {
   url?: Maybe<String>;
 }
 
-export interface DmUpsertWithWhereUniqueWithoutMessageInput {
+export interface DmUpsertWithWhereUniqueWithoutMessagesInput {
   where: DmWhereUniqueInput;
-  update: DmUpdateWithoutMessageDataInput;
-  create: DmCreateWithoutMessageInput;
+  update: DmUpdateWithoutMessagesDataInput;
+  create: DmCreateWithoutMessagesInput;
 }
 
 export interface LikeUpdateManyWithoutPostInput {
@@ -1053,19 +1071,19 @@ export interface LikeUpdateWithWhereUniqueWithoutPostInput {
   data: LikeUpdateWithoutPostDataInput;
 }
 
-export interface DmUpdateManyWithoutMessageInput {
-  create?: Maybe<DmCreateWithoutMessageInput[] | DmCreateWithoutMessageInput>;
+export interface DmUpdateManyWithoutMessagesInput {
+  create?: Maybe<DmCreateWithoutMessagesInput[] | DmCreateWithoutMessagesInput>;
   delete?: Maybe<DmWhereUniqueInput[] | DmWhereUniqueInput>;
   connect?: Maybe<DmWhereUniqueInput[] | DmWhereUniqueInput>;
   set?: Maybe<DmWhereUniqueInput[] | DmWhereUniqueInput>;
   disconnect?: Maybe<DmWhereUniqueInput[] | DmWhereUniqueInput>;
   update?: Maybe<
-    | DmUpdateWithWhereUniqueWithoutMessageInput[]
-    | DmUpdateWithWhereUniqueWithoutMessageInput
+    | DmUpdateWithWhereUniqueWithoutMessagesInput[]
+    | DmUpdateWithWhereUniqueWithoutMessagesInput
   >;
   upsert?: Maybe<
-    | DmUpsertWithWhereUniqueWithoutMessageInput[]
-    | DmUpsertWithWhereUniqueWithoutMessageInput
+    | DmUpsertWithWhereUniqueWithoutMessagesInput[]
+    | DmUpsertWithWhereUniqueWithoutMessagesInput
   >;
   deleteMany?: Maybe<DmScalarWhereInput[] | DmScalarWhereInput>;
 }
@@ -1087,12 +1105,13 @@ export interface UserUpdateOneWithoutLikesInput {
   connect?: Maybe<UserWhereUniqueInput>;
 }
 
-export interface DmCreateManyWithoutMessageInput {
-  create?: Maybe<DmCreateWithoutMessageInput[] | DmCreateWithoutMessageInput>;
+export interface DmCreateManyWithoutMessagesInput {
+  create?: Maybe<DmCreateWithoutMessagesInput[] | DmCreateWithoutMessagesInput>;
   connect?: Maybe<DmWhereUniqueInput[] | DmWhereUniqueInput>;
 }
 
 export interface UserUpdateWithoutLikesDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1149,6 +1168,7 @@ export type PostWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface UserUpdateWithoutFollowingDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1234,9 +1254,9 @@ export interface DmWhereInput {
   participants_every?: Maybe<UserWhereInput>;
   participants_some?: Maybe<UserWhereInput>;
   participants_none?: Maybe<UserWhereInput>;
-  message_every?: Maybe<MessageWhereInput>;
-  message_some?: Maybe<MessageWhereInput>;
-  message_none?: Maybe<MessageWhereInput>;
+  messages_every?: Maybe<MessageWhereInput>;
+  messages_some?: Maybe<MessageWhereInput>;
+  messages_none?: Maybe<MessageWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -1320,6 +1340,7 @@ export interface FileCreateManyWithoutPostInput {
 }
 
 export interface UserUpdateWithoutPostsDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1552,10 +1573,11 @@ export interface CommentUpdateInput {
 }
 
 export interface DmUpdateWithoutParticipantsDataInput {
-  message?: Maybe<MessageUpdateManyWithoutDmInput>;
+  messages?: Maybe<MessageUpdateManyWithoutDmInput>;
 }
 
 export interface UserUpdateWithoutCommentsDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1636,6 +1658,7 @@ export interface UserUpdateOneRequiredInput {
 }
 
 export interface UserUpdateManyMutationInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1645,6 +1668,7 @@ export interface UserUpdateManyMutationInput {
 }
 
 export interface UserUpdateDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -1674,7 +1698,7 @@ export interface UserUpsertNestedInput {
   create: UserCreateInput;
 }
 
-export interface DmUpdateWithoutMessageDataInput {
+export interface DmUpdateWithoutMessagesDataInput {
   participants?: Maybe<UserUpdateManyWithoutDmInput>;
 }
 
@@ -1688,7 +1712,7 @@ export interface MessageUpdateInput {
   text?: Maybe<String>;
   from?: Maybe<UserUpdateOneRequiredInput>;
   to?: Maybe<UserUpdateOneRequiredInput>;
-  dm?: Maybe<DmUpdateManyWithoutMessageInput>;
+  dm?: Maybe<DmUpdateManyWithoutMessagesInput>;
 }
 
 export interface MessageScalarWhereInput {
@@ -1746,7 +1770,7 @@ export interface MessageCreateInput {
   text: String;
   from: UserCreateOneInput;
   to: UserCreateOneInput;
-  dm?: Maybe<DmCreateManyWithoutMessageInput>;
+  dm?: Maybe<DmCreateManyWithoutMessagesInput>;
 }
 
 export interface MessageUpdateManyWithWhereNestedInput {
@@ -1820,6 +1844,7 @@ export interface DmScalarWhereInput {
 
 export interface UserCreateWithoutCommentsInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -1882,6 +1907,7 @@ export interface CommentUpdateWithWhereUniqueWithoutPostInput {
 
 export interface UserCreateWithoutFollowingInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -1928,7 +1954,7 @@ export interface PostUpsertWithoutLikesInput {
 
 export interface DmCreateWithoutParticipantsInput {
   id?: Maybe<ID_Input>;
-  message?: Maybe<MessageCreateManyWithoutDmInput>;
+  messages?: Maybe<MessageCreateManyWithoutDmInput>;
 }
 
 export interface LikeUpsertWithWhereUniqueWithoutUserInput {
@@ -1939,6 +1965,7 @@ export interface LikeUpsertWithWhereUniqueWithoutUserInput {
 
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -2030,6 +2057,20 @@ export interface UserScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
+  avatar_not?: Maybe<String>;
+  avatar_in?: Maybe<String[] | String>;
+  avatar_not_in?: Maybe<String[] | String>;
+  avatar_lt?: Maybe<String>;
+  avatar_lte?: Maybe<String>;
+  avatar_gt?: Maybe<String>;
+  avatar_gte?: Maybe<String>;
+  avatar_contains?: Maybe<String>;
+  avatar_not_contains?: Maybe<String>;
+  avatar_starts_with?: Maybe<String>;
+  avatar_not_starts_with?: Maybe<String>;
+  avatar_ends_with?: Maybe<String>;
+  avatar_not_ends_with?: Maybe<String>;
   username?: Maybe<String>;
   username_not?: Maybe<String>;
   username_in?: Maybe<String[] | String>;
@@ -2156,6 +2197,7 @@ export interface MessageUpdateManyMutationInput {
 }
 
 export interface UserUpdateManyDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -2164,7 +2206,7 @@ export interface UserUpdateManyDataInput {
   loginSecret?: Maybe<String>;
 }
 
-export interface DmCreateWithoutMessageInput {
+export interface DmCreateWithoutMessagesInput {
   id?: Maybe<ID_Input>;
   participants?: Maybe<UserCreateManyWithoutDmInput>;
 }
@@ -2319,9 +2361,9 @@ export interface UserUpsertWithoutCommentsInput {
   create: UserCreateWithoutCommentsInput;
 }
 
-export interface DmUpdateWithWhereUniqueWithoutMessageInput {
+export interface DmUpdateWithWhereUniqueWithoutMessagesInput {
   where: DmWhereUniqueInput;
-  data: DmUpdateWithoutMessageDataInput;
+  data: DmUpdateWithoutMessagesDataInput;
 }
 
 export interface CommentUpdateManyMutationInput {
@@ -2334,6 +2376,7 @@ export interface FileUpdateInput {
 }
 
 export interface UserUpdateWithoutDmDataInput {
+  avatar?: Maybe<String>;
   username?: Maybe<String>;
   email?: Maybe<String>;
   firstName?: Maybe<String>;
@@ -2349,6 +2392,7 @@ export interface UserUpdateWithoutDmDataInput {
 
 export interface UserCreateWithoutLikesInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -2376,11 +2420,12 @@ export interface MessageCreateWithoutDmInput {
 
 export interface DmUpdateInput {
   participants?: Maybe<UserUpdateManyWithoutDmInput>;
-  message?: Maybe<MessageUpdateManyWithoutDmInput>;
+  messages?: Maybe<MessageUpdateManyWithoutDmInput>;
 }
 
 export interface UserCreateWithoutDmInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -2402,7 +2447,7 @@ export interface UserCreateManyWithoutDmInput {
 export interface DmCreateInput {
   id?: Maybe<ID_Input>;
   participants?: Maybe<UserCreateManyWithoutDmInput>;
-  message?: Maybe<MessageCreateManyWithoutDmInput>;
+  messages?: Maybe<MessageCreateManyWithoutDmInput>;
 }
 
 export interface UserUpdateManyWithoutFollowersInput {
@@ -2429,6 +2474,7 @@ export interface UserUpdateManyWithoutFollowersInput {
 
 export interface UserCreateWithoutPostsInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -2444,6 +2490,7 @@ export interface UserCreateWithoutPostsInput {
 
 export interface UserCreateWithoutFollowersInput {
   id?: Maybe<ID_Input>;
+  avatar?: Maybe<String>;
   username: String;
   email: String;
   firstName?: Maybe<String>;
@@ -2473,6 +2520,7 @@ export interface NodeNode {
 
 export interface UserPreviousValues {
   id: ID_Output;
+  avatar?: String;
   username: String;
   email: String;
   firstName?: String;
@@ -2487,6 +2535,7 @@ export interface UserPreviousValuesPromise
   extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  avatar: () => Promise<String>;
   username: () => Promise<String>;
   email: () => Promise<String>;
   firstName: () => Promise<String>;
@@ -2501,6 +2550,7 @@ export interface UserPreviousValuesSubscription
   extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  avatar: () => Promise<AsyncIterator<String>>;
   username: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   firstName: () => Promise<AsyncIterator<String>>;
@@ -3138,7 +3188,7 @@ export interface DmPromise extends Promise<Dm>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
-  message: <T = FragmentableArray<Message>>(args?: {
+  messages: <T = FragmentableArray<Message>>(args?: {
     where?: MessageWhereInput;
     orderBy?: MessageOrderByInput;
     skip?: Int;
@@ -3164,7 +3214,7 @@ export interface DmSubscription
     first?: Int;
     last?: Int;
   }) => T;
-  message: <T = Promise<AsyncIterator<MessageSubscription>>>(args?: {
+  messages: <T = Promise<AsyncIterator<MessageSubscription>>>(args?: {
     where?: MessageWhereInput;
     orderBy?: MessageOrderByInput;
     skip?: Int;
@@ -3188,7 +3238,7 @@ export interface DmNullablePromise extends Promise<Dm | null>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
-  message: <T = FragmentableArray<Message>>(args?: {
+  messages: <T = FragmentableArray<Message>>(args?: {
     where?: MessageWhereInput;
     orderBy?: MessageOrderByInput;
     skip?: Int;
@@ -3315,6 +3365,7 @@ export interface AggregateMessageSubscription
 
 export interface User {
   id: ID_Output;
+  avatar?: String;
   username: String;
   email: String;
   firstName?: String;
@@ -3327,6 +3378,7 @@ export interface User {
 
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
+  avatar: () => Promise<String>;
   username: () => Promise<String>;
   email: () => Promise<String>;
   firstName: () => Promise<String>;
@@ -3395,6 +3447,7 @@ export interface UserSubscription
   extends Promise<AsyncIterator<User>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  avatar: () => Promise<AsyncIterator<String>>;
   username: () => Promise<AsyncIterator<String>>;
   email: () => Promise<AsyncIterator<String>>;
   firstName: () => Promise<AsyncIterator<String>>;
@@ -3463,6 +3516,7 @@ export interface UserNullablePromise
   extends Promise<User | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  avatar: () => Promise<String>;
   username: () => Promise<String>;
   email: () => Promise<String>;
   firstName: () => Promise<String>;

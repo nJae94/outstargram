@@ -306,7 +306,7 @@ scalar DateTime
 type Dm {
   id: ID!
   participants(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
-  message(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
+  messages(where: MessageWhereInput, orderBy: MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Message!]
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -320,11 +320,11 @@ type DmConnection {
 input DmCreateInput {
   id: ID
   participants: UserCreateManyWithoutDmInput
-  message: MessageCreateManyWithoutDmInput
+  messages: MessageCreateManyWithoutDmInput
 }
 
-input DmCreateManyWithoutMessageInput {
-  create: [DmCreateWithoutMessageInput!]
+input DmCreateManyWithoutMessagesInput {
+  create: [DmCreateWithoutMessagesInput!]
   connect: [DmWhereUniqueInput!]
 }
 
@@ -333,14 +333,14 @@ input DmCreateManyWithoutParticipantsInput {
   connect: [DmWhereUniqueInput!]
 }
 
-input DmCreateWithoutMessageInput {
+input DmCreateWithoutMessagesInput {
   id: ID
   participants: UserCreateManyWithoutDmInput
 }
 
 input DmCreateWithoutParticipantsInput {
   id: ID
-  message: MessageCreateManyWithoutDmInput
+  messages: MessageCreateManyWithoutDmInput
 }
 
 type DmEdge {
@@ -419,17 +419,17 @@ input DmSubscriptionWhereInput {
 
 input DmUpdateInput {
   participants: UserUpdateManyWithoutDmInput
-  message: MessageUpdateManyWithoutDmInput
+  messages: MessageUpdateManyWithoutDmInput
 }
 
-input DmUpdateManyWithoutMessageInput {
-  create: [DmCreateWithoutMessageInput!]
+input DmUpdateManyWithoutMessagesInput {
+  create: [DmCreateWithoutMessagesInput!]
   delete: [DmWhereUniqueInput!]
   connect: [DmWhereUniqueInput!]
   set: [DmWhereUniqueInput!]
   disconnect: [DmWhereUniqueInput!]
-  update: [DmUpdateWithWhereUniqueWithoutMessageInput!]
-  upsert: [DmUpsertWithWhereUniqueWithoutMessageInput!]
+  update: [DmUpdateWithWhereUniqueWithoutMessagesInput!]
+  upsert: [DmUpsertWithWhereUniqueWithoutMessagesInput!]
   deleteMany: [DmScalarWhereInput!]
 }
 
@@ -444,17 +444,17 @@ input DmUpdateManyWithoutParticipantsInput {
   deleteMany: [DmScalarWhereInput!]
 }
 
-input DmUpdateWithoutMessageDataInput {
+input DmUpdateWithoutMessagesDataInput {
   participants: UserUpdateManyWithoutDmInput
 }
 
 input DmUpdateWithoutParticipantsDataInput {
-  message: MessageUpdateManyWithoutDmInput
+  messages: MessageUpdateManyWithoutDmInput
 }
 
-input DmUpdateWithWhereUniqueWithoutMessageInput {
+input DmUpdateWithWhereUniqueWithoutMessagesInput {
   where: DmWhereUniqueInput!
-  data: DmUpdateWithoutMessageDataInput!
+  data: DmUpdateWithoutMessagesDataInput!
 }
 
 input DmUpdateWithWhereUniqueWithoutParticipantsInput {
@@ -462,10 +462,10 @@ input DmUpdateWithWhereUniqueWithoutParticipantsInput {
   data: DmUpdateWithoutParticipantsDataInput!
 }
 
-input DmUpsertWithWhereUniqueWithoutMessageInput {
+input DmUpsertWithWhereUniqueWithoutMessagesInput {
   where: DmWhereUniqueInput!
-  update: DmUpdateWithoutMessageDataInput!
-  create: DmCreateWithoutMessageInput!
+  update: DmUpdateWithoutMessagesDataInput!
+  create: DmCreateWithoutMessagesInput!
 }
 
 input DmUpsertWithWhereUniqueWithoutParticipantsInput {
@@ -492,9 +492,9 @@ input DmWhereInput {
   participants_every: UserWhereInput
   participants_some: UserWhereInput
   participants_none: UserWhereInput
-  message_every: MessageWhereInput
-  message_some: MessageWhereInput
-  message_none: MessageWhereInput
+  messages_every: MessageWhereInput
+  messages_some: MessageWhereInput
+  messages_none: MessageWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -977,7 +977,7 @@ input MessageCreateInput {
   text: String!
   from: UserCreateOneInput!
   to: UserCreateOneInput!
-  dm: DmCreateManyWithoutMessageInput
+  dm: DmCreateManyWithoutMessagesInput
 }
 
 input MessageCreateManyWithoutDmInput {
@@ -1087,7 +1087,7 @@ input MessageUpdateInput {
   text: String
   from: UserUpdateOneRequiredInput
   to: UserUpdateOneRequiredInput
-  dm: DmUpdateManyWithoutMessageInput
+  dm: DmUpdateManyWithoutMessagesInput
 }
 
 input MessageUpdateManyDataInput {
@@ -1679,6 +1679,7 @@ type Subscription {
 
 type User {
   id: ID!
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1703,6 +1704,7 @@ type UserConnection {
 
 input UserCreateInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1754,6 +1756,7 @@ input UserCreateOneWithoutPostsInput {
 
 input UserCreateWithoutCommentsInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1769,6 +1772,7 @@ input UserCreateWithoutCommentsInput {
 
 input UserCreateWithoutDmInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1784,6 +1788,7 @@ input UserCreateWithoutDmInput {
 
 input UserCreateWithoutFollowersInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1799,6 +1804,7 @@ input UserCreateWithoutFollowersInput {
 
 input UserCreateWithoutFollowingInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1814,6 +1820,7 @@ input UserCreateWithoutFollowingInput {
 
 input UserCreateWithoutLikesInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1829,6 +1836,7 @@ input UserCreateWithoutLikesInput {
 
 input UserCreateWithoutPostsInput {
   id: ID
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1850,6 +1858,8 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  avatar_ASC
+  avatar_DESC
   username_ASC
   username_DESC
   email_ASC
@@ -1870,6 +1880,7 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+  avatar: String
   username: String!
   email: String!
   firstName: String
@@ -1895,6 +1906,20 @@ input UserScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  avatar: String
+  avatar_not: String
+  avatar_in: [String!]
+  avatar_not_in: [String!]
+  avatar_lt: String
+  avatar_lte: String
+  avatar_gt: String
+  avatar_gte: String
+  avatar_contains: String
+  avatar_not_contains: String
+  avatar_starts_with: String
+  avatar_not_starts_with: String
+  avatar_ends_with: String
+  avatar_not_ends_with: String
   username: String
   username_not: String
   username_in: [String!]
@@ -2019,6 +2044,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2034,6 +2060,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2049,6 +2076,7 @@ input UserUpdateInput {
 }
 
 input UserUpdateManyDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2058,6 +2086,7 @@ input UserUpdateManyDataInput {
 }
 
 input UserUpdateManyMutationInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2142,6 +2171,7 @@ input UserUpdateOneWithoutPostsInput {
 }
 
 input UserUpdateWithoutCommentsDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2156,6 +2186,7 @@ input UserUpdateWithoutCommentsDataInput {
 }
 
 input UserUpdateWithoutDmDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2170,6 +2201,7 @@ input UserUpdateWithoutDmDataInput {
 }
 
 input UserUpdateWithoutFollowersDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2184,6 +2216,7 @@ input UserUpdateWithoutFollowersDataInput {
 }
 
 input UserUpdateWithoutFollowingDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2198,6 +2231,7 @@ input UserUpdateWithoutFollowingDataInput {
 }
 
 input UserUpdateWithoutLikesDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2212,6 +2246,7 @@ input UserUpdateWithoutLikesDataInput {
 }
 
 input UserUpdateWithoutPostsDataInput {
+  avatar: String
   username: String
   email: String
   firstName: String
@@ -2293,6 +2328,20 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  avatar: String
+  avatar_not: String
+  avatar_in: [String!]
+  avatar_not_in: [String!]
+  avatar_lt: String
+  avatar_lte: String
+  avatar_gt: String
+  avatar_gte: String
+  avatar_contains: String
+  avatar_not_contains: String
+  avatar_starts_with: String
+  avatar_not_starts_with: String
+  avatar_ends_with: String
+  avatar_not_ends_with: String
   username: String
   username_not: String
   username_in: [String!]
