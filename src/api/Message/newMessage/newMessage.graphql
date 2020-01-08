@@ -1,0 +1,3 @@
+type Subscription {
+    newMessage(dmId: String!): Message
+}

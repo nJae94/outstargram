@@ -1,5 +1,5 @@
-import { prisma } from "../../../generated/prisma-client";
-import { DM_FRAGMENT } from "../../fragments";
+import { prisma } from "../../../../generated/prisma-client";
+import { DM_FRAGMENT } from "../../../fragments";
 
 export default {
   Mutation: {

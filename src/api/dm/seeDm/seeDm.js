@@ -9,6 +9,7 @@ export default {
             const{id} = args;
             const {user}= request;
 
+            //Dm 채팅방이 존재하는지 검사
             const canSee = await prisma.$exists.dm(
                 {
                     participants_some: {
@@ -16,9 +17,10 @@ export default {
                     }
                 }
             );
-
+            //존재하면
             if(canSee)
             {
+                // 해당 ID값을 통해 DM_FRAGMENT를 검색
                 return prisma.dm({id}).$fragment(DM_FRAGMENT);
             }
             else

@@ -18,3 +18,4 @@ graphql을 사용하여 create Account 테스트
 - [X] 이미지 등록 
 - [X] 포스트 수정 
 - [X] Dm 보내기
+- [] DM 사용 시 알람 작업
