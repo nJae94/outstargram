@@ -6,7 +6,8 @@ export default {
       isAuthenticated(request);
       const { user } = request;
       const following = await prisma.user({ id: user.id }).following();
-      return prisma.posts({
+      
+      const posts = prisma.posts({
         where: {
           user: {
             id_in: [...following.map(user => user.id), user.id]
@@ -14,6 +15,8 @@ export default {
         },
         orderBy: "createdAt_DESC"
       });
+      
+      return posts;
     }
   }
 };
