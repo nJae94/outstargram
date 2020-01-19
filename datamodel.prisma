@@ -1,7 +1,9 @@
 type User {
   id: ID! @id
-  avatar: String
-  username: String! @unique
+  avatar: String  @default(
+      value: "https://www.i-boss.co.kr/template/DESIGN_shared/program/theme/01/THUMBNAIL_60_60_icon_rep_box.gif"
+    )
+  username: String! 
   email: String! @unique
   firstName: String @default(value: "")
   lastName: String
