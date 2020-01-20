@@ -1209,6 +1209,7 @@ export interface LikeUpdateManyWithoutUserInput {
 
 export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  username?: Maybe<String>;
   email?: Maybe<String>;
 }>;
 
