@@ -8,7 +8,11 @@ export default {
     likes: ({ id }) => prisma.user({ id }).likes(),
     comments: ({ id }) => prisma.user({ id }).comments(),
     Dm: ({ id }) => prisma.user({ id }).Dm(),
-    postsCount: ({id}) => prisma.postsConnection({where: {user:{id}}}).aggregate().count(),
+    postsCount: ({id}) => 
+    prisma
+    .postsConnection({where: {user:{id}}})
+    .aggregate()
+    .count(),
     followingCount: ({ id }) =>
       prisma
         .usersConnection({ where: { followers_some: { id } } })
