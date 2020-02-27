@@ -36,6 +36,6 @@ var models = [
 exports.Prisma = prisma_lib_1.makePrismaClientClass({
   typeDefs,
   models,
-  endpoint: `https://us1.prisma.sh/sunjae-jeong-895707/outstargram/dev`
+  endpoint: `https://eu1.prisma.sh/sunjae-jeong-895707/outstargram/dev`
 });
 exports.prisma = new exports.Prisma();
